@@ -4,11 +4,11 @@ using TMPro;
 [RequireComponent(typeof(CanvasGroup))]
 public class LevelDisplay : MonoBehaviour
 {
-    [SerializeField] private ContinueButton _continueButton;
     [SerializeField] private FinishScreen _finishPanel;
     [SerializeField] private TMP_Text _text;
 
     private CanvasGroup _canvasGroup;
+    private int _minimumValueAlpha = 0;
 
     private void OnEnable()
     {
@@ -28,6 +28,6 @@ public class LevelDisplay : MonoBehaviour
 
     private void OnFinishPanelOpen()
     {
-        _canvasGroup.alpha = 0;
+        _canvasGroup.alpha = _minimumValueAlpha;
     }
 }

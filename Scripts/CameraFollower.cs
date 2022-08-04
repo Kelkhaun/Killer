@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using Cinemachine;
-using System;
 
 public class CameraFollower : MonoBehaviour
 {
@@ -12,7 +11,6 @@ public class CameraFollower : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private Finger _finger1;
     [SerializeField] private Finger _finger2;
-    [SerializeField] private Frame _helpPanel;
 
     private float _XPoistion1 = -541.44f;
     private float _XPoistion2 = -537.9f;
@@ -47,15 +45,23 @@ public class CameraFollower : MonoBehaviour
 
     private IEnumerator ShowAttack()
     {
-        Vector3 targetPosition1 = new Vector3(0, 3, 4.84f);
-        Quaternion targetRotation1 = Quaternion.Euler(12f, 0, 0);
-        Vector3 targetPosition2 = new Vector3(0, 1, -1.3f);
-        Quaternion targetRotation2 = Quaternion.Euler(0, 0, 0);
+        float zeroPosition = 0f;
+        float xPosition2 = 12f;
+        float yPosition1 = 3f;
+        float yPosition3 = 1f;
+        float zPosition = 4.84f;
+        float zOffset = 1.3f;
+        float delay = 2f;
+        WaitForSeconds waitForSeconds = new WaitForSeconds(delay);
+        Vector3 targetPosition1 = new Vector3(zeroPosition, yPosition1, zPosition);
+        Quaternion targetRotation1 = Quaternion.Euler(xPosition2, zeroPosition, zeroPosition);
+        Vector3 targetPosition2 = new Vector3(zeroPosition, yPosition3 - zOffset);
+        Quaternion targetRotation2 = Quaternion.Euler(zeroPosition, zeroPosition, zeroPosition);
 
         StartCoroutine(Move(targetPosition1));
         StartCoroutine(Turn(targetRotation1));
 
-        yield return new WaitForSeconds(2f);
+        yield return waitForSeconds;
 
         if (_playerMover.PlatformNumber == _firstPlatform && SaveProgress.LevelNumber == _firstLevel)
             StartCoroutine(_finger1.Show(_XPoistion1, _XPoistion2));
@@ -75,12 +81,20 @@ public class CameraFollower : MonoBehaviour
     private IEnumerator MoveToPlatform()
     {
         yield return new WaitForSeconds(_delay3);
-
-        Vector3 targetPosition1 = new Vector3(0, 3, 6);
-        Vector3 targetPosition2 = new Vector3(0, 1, -1.3f);
-        Quaternion targetRotation = Quaternion.Euler(0, 0, 0);
-        Vector2 targetPosition3 = new Vector2(-538.69f, -1882.602f);
-        Vector2 startPosition = new Vector2(-540.8f, -1882.602f);
+        float zeroPosition = 0f;
+        float zeroAngle = 0f;
+        float yPosition1 = 3f;
+        float yPosition2 = 1f;
+        float yPosition3 = -1882.602f;
+        float zPosition1 = 6f;
+        float zPosition2 = -1.3f;
+        float xPosition1 = -538.69f;
+        float xPosition2 = -540.8f;
+        Vector3 targetPosition1 = new Vector3(zeroPosition, yPosition1, zPosition1);
+        Vector3 targetPosition2 = new Vector3(zeroPosition, yPosition2, zPosition2);
+        Quaternion targetRotation = Quaternion.Euler(zeroAngle, zeroAngle, zeroAngle);
+        Vector2 targetPosition3 = new Vector2(xPosition1, yPosition3);
+        Vector2 startPosition = new Vector2(xPosition2, yPosition3);
 
         StartCoroutine(Move(targetPosition1));
 

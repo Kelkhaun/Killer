@@ -1,5 +1,4 @@
 using DG.Tweening;
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,26 +9,20 @@ public class ContinueButton : MonoBehaviour
     [SerializeField] private CanvasGroup[] _canvasGroup;
     [SerializeField] private Image _image;
     [SerializeField] private Button _button;
-    [SerializeField] private bool _isDeleteProgress;
 
     private float _duration = 0.3f;
     private int _minimumValueAlpha = 0;
     private int _maximumValueAlpha = 1;
-    private int _sceneNumber = -1;
-    [SerializeField] int currentLevel;
+    private int _sceneNumber = 0;
 
     private void Awake()
     {
-        if(_isDeleteProgress == true)
-        PlayerPrefs.DeleteAll();
-
         if (SaveProgress.LevelNumber == 0)
             SaveProgress.LevelNumber++;
     }
 
     private void OnEnable()
     {
-        SaveProgress.LevelNumber = currentLevel;
         _button.onClick.AddListener(OnButtonClick);
     }
 

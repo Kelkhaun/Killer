@@ -12,9 +12,9 @@ public class LevelCreator : MonoBehaviour
     [SerializeField] private Enemy[] _enemiesAtStart;
 
     private int _nextPlatform;
+    private int _firstLevel = 1;
     private Vector3 _targetScale = Vector3.one;
     private float _duration = 0.4f;
-    private int _firstLevel = 1;
 
     private void OnEnable()
     {

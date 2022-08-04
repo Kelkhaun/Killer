@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyPhysics : MonoBehaviour
@@ -24,6 +22,7 @@ public class EnemyPhysics : MonoBehaviour
             }
         }
     }
+
     private void HashAnchorValues()
     {
         _children = transform.GetComponentsInChildren<Transform>();

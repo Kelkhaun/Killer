@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DottedLine : MonoBehaviour
@@ -25,7 +24,9 @@ public class DottedLine : MonoBehaviour
         if (Physics.Raycast(ray, out hit, _rayDistance, _raycastMask))
         {
             float width = _trailRenderer.startWidth;
-            _trailRenderer.material.mainTextureScale = new Vector2(1f / width, 1.0f);
+            float xPosition = 1f;
+            float yPosition = 1f;
+            _trailRenderer.material.mainTextureScale = new Vector2(xPosition / width, yPosition);
             _trailPoint.position = hit.point;
             _trailRenderer.enabled = true;
             StartCoroutine(DestroyLine());

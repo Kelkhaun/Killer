@@ -9,13 +9,15 @@ public class FinishScreen : MonoBehaviour
 
     private CanvasGroup _canvasGroup;
     private float _duration = 0.5f;
+    private int _minimumValueAlpha = 0;
+    private int _maximumValueAlpha = 1;
 
     public event Action FinishPanelOpen;
 
     private void Start()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
-        _canvasGroup.alpha = 0;
+        _canvasGroup.alpha = _minimumValueAlpha;
     }
 
     private void OnEnable()
@@ -31,7 +33,7 @@ public class FinishScreen : MonoBehaviour
     private void OnAllEnemyDying()
     {
         FinishPanelOpen?.Invoke();
-        _canvasGroup.alpha = 1;
+        _canvasGroup.alpha = _maximumValueAlpha;
 
         for (int i = 0; i < _rectTransforms.Length; i++)
         {

@@ -21,12 +21,12 @@ public class Player : MonoBehaviour
     private Knife _knife;
     private List<Vector3> _points = new List<Vector3>();
     private float _timeBetweenAddingPoints = 0.05f;
-    private int _rayDistance = 30;
     private float _elapsedTime;
+    private int _rayDistance = 30;
     private int _emptyGroups = 0;
-    private int _secondPlatform;
-    private int _firstLevel;
-    private int _delay;
+    private int _firstLevel = 1;
+    private int _secondPlatform = 2;
+    private float _delay = 0f;
     private bool _canThrowKnife => _points.Count > 1;
 
     public int CurrentEnemyCount => _currentEnemyGroup.EnemyCount;

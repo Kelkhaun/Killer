@@ -9,10 +9,9 @@ public class PlayerMover : MonoBehaviour
 {
     private Animator _animator;
     private Player _player; 
-    private int _motionState;
     private Vector3 _targetPosition1;
     private Vector3 _targetPosition2;
-
+    private int _motionState;
     private int _platformNumber;
     private int _firstPlatform = 1;
     private int _firstLevel = 1;
@@ -21,6 +20,11 @@ public class PlayerMover : MonoBehaviour
     public int PlatformNumber => _platformNumber;
 
     public event Action Running;
+
+    private void Awake()
+    {
+        _player = GetComponent<Player>();
+    }
 
     private void OnEnable()
     {
@@ -32,10 +36,6 @@ public class PlayerMover : MonoBehaviour
         _player.AllEnemiesOnPlatformIsDead -= OnAllEnemiesOnPlatformIsDead;
     }
 
-    private void Awake()
-    {
-        _player = GetComponent<Player>();
-    }
 
     private IEnumerator Start()
     {

@@ -12,8 +12,15 @@ public class Knife : MonoBehaviour
     private Tween _knifeMovement;
     private bool _isWorking = false;
     private float _duration1 = 1f;
-    private Vector3 _threeSixteenths = new Vector3(0, 360, 0);
     private float _duration2 = 2f;
+    private float _zeroAngle = 0;
+    private float _maximumTurningRotation = 360;
+    private Vector3 _threeSixteenths;
+
+    private void Start()
+    {
+        _threeSixteenths = new Vector3(_zeroAngle, _maximumTurningRotation, _zeroAngle);
+    }
 
     private void Update()
     {

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider))]
 public class EnemyGroup : MonoBehaviour
 {
     [SerializeField] private List<Enemy> _enemies;
@@ -11,11 +12,6 @@ public class EnemyGroup : MonoBehaviour
     public int EnemyCount => _enemies.Count;
 
     public event Action EnemyDying;
-
-    private void Start()
-    {
-        _collider = GetComponent<BoxCollider>();
-    }
 
     private void OnEnable()
     {
@@ -31,6 +27,11 @@ public class EnemyGroup : MonoBehaviour
         {
             _enemies[i].OneEnemyIsDead -= OnOneEnemyIsDead;
         }
+    }
+
+    private void Start()
+    {
+        _collider = GetComponent<BoxCollider>();
     }
 
     public void DeactivateCollider()
